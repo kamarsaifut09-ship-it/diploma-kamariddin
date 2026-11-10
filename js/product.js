@@ -69,7 +69,12 @@
     priceNode.textContent = `$${currentProduct.price.toFixed(2)}`;
     document.title = `${currentProduct.name} | WEPRO`;
     descriptionNode.hidden = true;
-    mainImage.alt = 'Olive green WEPRO graphic T-shirt';
+    mainImage.src = currentProduct.image;
+    mainImage.alt = currentProduct.name;
+    document.querySelectorAll('.product-thumbnail img').forEach((image) => {
+      image.src = currentProduct.image;
+      image.alt = '';
+    });
     addButton.disabled = false;
     comments = product.comments || [];
     totalComments = Number(product.commentsCount) || comments.length;
