@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>One Life Graphic T-shirt | WEPRO</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <script src="js/api.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js" defer></script>
+    <script src="js/product.js" defer></script>
+  </head>
+  <body class="product-detail-page">
+    <header class="site-header">
+      <button class="menu-button" type="button" aria-label="Menu" disabled><span></span><span></span><span></span></button>
+      <nav class="header-nav header-nav--left" aria-label="Main navigation">
+        <a href="home.html#home">Home</a>
+        <a href="products.html">Products</a>
+      </nav>
+      <a class="brand" href="home.html#home" aria-label="WEPRO home"><img src="public/images/logo.webp" alt="WEPRO" /></a>
+      <nav class="header-nav header-nav--right" aria-label="Account and bag">
+        <a href="account.html">Account</a>
+        <a href="bag.html" data-cart-link>Bag (<span data-cart-count aria-live="polite">0</span>)</a>
+      </nav>
+    </header>
+    <main>
+      <section class="product-detail" aria-labelledby="product-title">
+        <div class="product-gallery">
+          <div class="product-detail__image-frame"><img class="product-detail__image" src="public/images/product-shirt.png" alt="Olive green WEPRO graphic T-shirt" /></div>
+          <div class="product-thumbnails" aria-label="Product images">
+            <button class="product-thumbnail is-selected" type="button" aria-label="Show T-shirt image 1" aria-pressed="true"><img src="public/images/product-shirt.png" alt="" /></button>
+            <button class="product-thumbnail" type="button" aria-label="Show T-shirt image 2" aria-pressed="false"><img src="public/images/product-shirt.png" alt="" /></button>
+            <button class="product-thumbnail" type="button" aria-label="Show T-shirt image 3" aria-pressed="false"><img src="public/images/product-shirt.png" alt="" /></button>
+          </div>
+        </div>
+        <div class="product-detail__info">
+          <h1 id="product-title">One Life Graphic T-shirt</h1>
+          <p class="product-detail__price">$260</p>
+          <p class="product-detail__description">This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.</p>
+          <div class="product-detail__actions">
+            <div class="bag-quantity product-quantity" aria-label="Quantity">
+              <button type="button" data-quantity-decrease aria-label="Decrease quantity">−</button>
+              <span data-quantity aria-live="polite">1</span>
+              <button type="button" data-quantity-increase aria-label="Increase quantity">+</button>
+            </div>
+            <button class="product-add-button" type="button" data-add-to-cart>Add to cart</button>
+          </div>
+          <p class="product-detail__notice" data-cart-notice role="status" aria-live="polite"></p>
+        </div>
+      </section>
+      <section class="product-reviews" aria-labelledby="reviews-title">
+        <div class="reviews-heading">
+          <h2 id="reviews-title">All Reviews <span data-review-count>(451)</span></h2>
+          <button class="write-review-button" type="button" data-open-review>Write a Review</button>
+        </div>
+        <div class="review-grid" data-reviews></div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-brand-column">
+          <span class="footer-logo">Skin—Clinic</span>
+          <div class="footer-socials" aria-label="Social media">
+            <span aria-hidden="true"><svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="3"/><circle cx="8" cy="8" r="3"/><circle class="social-dot" cx="11.5" cy="4.5" r=".8"/></svg></span>
+            <span aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.2 14V8.7h1.8l.3-2.1H9.2V5.3c0-.6.2-1 1-1h1.2V2.4c-.2 0-.9-.1-1.7-.1-1.8 0-3 1.1-3 3.1v1.2h-2v2.1h2V14z"/></svg></span>
+            <span aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M14.7 4.5a1.8 1.8 0 0 0-1.3-1.3C12.3 2.9 8 2.9 8 2.9s-4.3 0-5.4.3a1.8 1.8 0 0 0-1.3 1.3C1 5.6 1 8 1 8s0 2.4.3 3.5a1.8 1.8 0 0 0 1.3 1.3c1.1.3 5.4.3 5.4.3s4.3 0 5.4-.3a1.8 1.8 0 0 0 1.3-1.3C15 10.4 15 8 15 8s0-2.4-.3-3.5M6.6 10.1V5.9L10.2 8z"/></svg></span>
+          </div>
+        </div>
+        <section class="footer-column" aria-label="Products"><h2>Products</h2><ul><li>Creams</li><li>Serums</li><li>Lotions</li><li>Shop all</li></ul></section>
+        <section class="footer-column" aria-label="Support"><h2>Support</h2><ul><li>FAQs</li><li>Return policy</li><li>Shipping policy</li><li>Start a return</li></ul></section>
+        <section class="footer-column" aria-label="Company"><h2>Company</h2><ul><li>About us</li><li>Journal</li><li>Contact us</li></ul></section>
+      </div>
+      <div class="footer-bottom"><span>© 2025 Skin—Clinic</span><div class="footer-legal"><span>Terms of service</span><span>Privacy policy</span><span>Cookies settings</span></div></div>
+    </footer>
+    <dialog class="review-dialog" data-review-dialog aria-labelledby="review-dialog-title">
+      <form data-review-form>
+        <div data-review-form-content>
+          <h2 id="review-dialog-title">Leave a comment</h2>
+          <label for="review-comment">Text</label>
+          <textarea id="review-comment" name="comment" placeholder="Your comment" required minlength="2" maxlength="300" rows="5"></textarea>
+          <button class="review-dialog__send" type="submit">Send</button>
+          <p class="review-form-error" data-review-error role="alert" hidden></p>
+        </div>
+      </form>
+      <section class="review-success" data-review-success hidden aria-labelledby="review-success-title">
+        <h2 id="review-success-title">Thank you!</h2>
+        <p>You left new comment</p>
+        <button type="button" data-close-success>Okey</button>
+      </section>
+    </dialog>
+  </body>
+</html>

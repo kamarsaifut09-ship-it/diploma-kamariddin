@@ -1,0 +1,9 @@
+{
+  "name": "wepro-diploma-store",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node scripts/build-netlify.js"
+  }
+}

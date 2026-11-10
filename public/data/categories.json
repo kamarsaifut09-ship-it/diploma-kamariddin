@@ -1,0 +1,17 @@
+[
+  {
+    "id": "creams",
+    "name": "Creams",
+    "image": "public/images/category-creams.jpg"
+  },
+  {
+    "id": "serums",
+    "name": "Serums",
+    "image": "public/images/category-serums.jpg"
+  },
+  {
+    "id": "lotion",
+    "name": "Lotion",
+    "image": "public/images/category-lotion.jpg"
+  }
+]

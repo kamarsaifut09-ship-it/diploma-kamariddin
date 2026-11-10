@@ -1,0 +1,30 @@
+[
+  {
+    "id": "face-toner",
+    "name": "Face Toner",
+    "price": 47.99,
+    "category": "creams",
+    "image": "public/images/face-toner.png"
+  },
+  {
+    "id": "body-wash",
+    "name": "Body Wash",
+    "price": 49.99,
+    "category": "lotion",
+    "image": "public/images/body-wash.png"
+  },
+  {
+    "id": "body-serum",
+    "name": "Body Serum",
+    "price": 49.99,
+    "category": "serums",
+    "image": "public/images/body-serum.png"
+  },
+  {
+    "id": "face-mask",
+    "name": "Face Mask",
+    "price": 49.99,
+    "category": "creams",
+    "image": "public/images/face-mask.png"
+  }
+]

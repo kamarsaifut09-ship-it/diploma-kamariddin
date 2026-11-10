@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Log In | WEPRO</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <script src="js/api.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/auth.js" defer></script>
+  </head>
+  <body class="auth-page">
+    <header class="site-header">
+      <button class="menu-button" type="button" aria-label="Menu" disabled><span></span><span></span><span></span></button>
+      <nav class="header-nav header-nav--left" aria-label="Main navigation">
+        <a href="home.html#home">Home</a>
+        <a href="products.html">Products</a>
+      </nav>
+      <a class="brand" href="home.html#home" aria-label="WEPRO home"><img src="public/images/logo.webp" alt="WEPRO" /></a>
+      <nav class="header-nav header-nav--right" aria-label="Account and bag">
+        <a href="login.html" aria-current="page">Account</a>
+        <a href="bag.html" data-cart-link>Bag (<span data-cart-count aria-live="polite">0</span>)</a>
+      </nav>
+    </header>
+    <main>
+      <form class="auth-form" data-auth-form="login" aria-labelledby="auth-title">
+        <h1 id="auth-title">Log In</h1>
+        <div class="auth-form__fields">
+          <div class="auth-form__field">
+            <label for="login-email">Email</label>
+            <input id="login-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+          <div class="auth-form__field">
+            <label for="login-password">Password</label>
+            <input id="login-password" name="password" type="password" placeholder="Your password" autocomplete="current-password" minlength="4" required />
+          </div>
+        </div>
+        <button class="auth-form__submit" type="submit">Log In</button>
+        <p class="auth-error" data-auth-error role="alert" hidden></p>
+        <p class="auth-switch">New here? <a href="register.html" data-auth-switch>Create account</a></p>
+      </form>
+    </main>
+  </body>
+</html>
