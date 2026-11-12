@@ -14,6 +14,8 @@
   const maxInput = document.querySelector('[data-max-price]');
   const minOutput = document.querySelector('[data-min-output]');
   const maxOutput = document.querySelector('[data-max-output]');
+  const priceRange = document.querySelector('[data-price-range]');
+  const priceValues = document.querySelector('.price-values');
   const rangeFill = document.querySelector('[data-range-fill]');
   const applyButton = document.querySelector('[data-apply-filters]');
   const priceHeading = document.querySelector('.price-filter__heading');
@@ -35,6 +37,7 @@
     document.body.classList.toggle('filters-open', open);
     if (open) filterPanel.querySelector('button')?.focus();
     else if (mobileLayout.matches) filtersToggle.focus();
+    if (open) requestAnimationFrame(updatePriceLabels);
   };
 
   const createProductCard = (item) => {
@@ -82,8 +85,22 @@
     const max = Number(maxInput.value);
     minOutput.value = `$${min}`;
     maxOutput.value = `$${max}`;
-    rangeFill.style.left = `${min}%`;
-    rangeFill.style.width = `${max - min}%`;
+
+    const width = priceRange.getBoundingClientRect().width;
+    if (!width) return;
+    const thumbSize = parseFloat(getComputedStyle(priceRange).getPropertyValue('--thumb-size')) || 18;
+    const position = (value) => thumbSize / 2 + (width - thumbSize) * value / 100;
+    const labelPosition = (center, label) => Math.max(label.offsetWidth / 2, Math.min(width - label.offsetWidth / 2, center));
+    const minPosition = position(min);
+    const maxPosition = position(max);
+    const minLabelPosition = labelPosition(minPosition, minOutput);
+    const maxLabelPosition = labelPosition(maxPosition, maxOutput);
+
+    minOutput.style.left = `${minLabelPosition}px`;
+    maxOutput.style.left = `${maxLabelPosition}px`;
+    priceValues.classList.toggle('is-overlapping', maxLabelPosition - minLabelPosition < (minOutput.offsetWidth + maxOutput.offsetWidth) / 2 + 4);
+    rangeFill.style.left = `${minPosition}px`;
+    rangeFill.style.width = `${Math.max(0, maxPosition - minPosition)}px`;
   };
 
   minInput.addEventListener('input', () => {
@@ -94,6 +111,7 @@
     if (+maxInput.value < +minInput.value) maxInput.value = minInput.value;
     updatePriceLabels();
   });
+  window.addEventListener('resize', updatePriceLabels, { passive: true });
   applyButton.addEventListener('click', () => {
     appliedMin = Number(minInput.value);
     appliedMax = Number(maxInput.value);

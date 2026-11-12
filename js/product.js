@@ -71,10 +71,6 @@
     descriptionNode.hidden = true;
     mainImage.src = currentProduct.image;
     mainImage.alt = currentProduct.name;
-    document.querySelectorAll('.product-thumbnail img').forEach((image) => {
-      image.src = currentProduct.image;
-      image.alt = '';
-    });
     addButton.disabled = false;
     comments = product.comments || [];
     totalComments = Number(product.commentsCount) || comments.length;
@@ -135,17 +131,6 @@
       cartNotice.textContent = error.message;
       cartNotice.style.display = 'block';
     }
-  });
-
-  document.querySelectorAll('.product-thumbnail').forEach((thumbnail) => {
-    thumbnail.addEventListener('click', () => {
-      document.querySelectorAll('.product-thumbnail').forEach((item) => {
-        const selected = item === thumbnail;
-        item.classList.toggle('is-selected', selected);
-        item.setAttribute('aria-pressed', String(selected));
-      });
-      mainImage.src = thumbnail.querySelector('img').src;
-    });
   });
 
   const reviewReturn = () => `product-page.html?id=${currentProduct.id}&review=1`;
