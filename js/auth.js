@@ -5,6 +5,12 @@
   const api = window.weproApi;
   const errorNode = document.querySelector('[data-auth-error]');
   const returnTo = api.safeReturnTo(new URLSearchParams(location.search).get('returnTo'));
+  const registering = form.dataset.authForm === 'register';
+  const contextNode = document.querySelector('[data-auth-context]');
+  if (returnTo === 'bag.html' && contextNode) {
+    contextNode.textContent = registering ? 'Create an account to view your bag.' : 'Log in to view your bag.';
+    contextNode.hidden = false;
+  }
   const switchLink = form.querySelector('[data-auth-switch]');
   if (switchLink) {
     const page = switchLink.getAttribute('href').split('?')[0];
@@ -20,7 +26,6 @@
     event.preventDefault();
     errorNode.hidden = true;
     const data = new FormData(form);
-    const registering = form.dataset.authForm === 'register';
     if (registering && data.get('password') !== data.get('password-confirm')) {
       showError('Passwords do not match.');
       return;

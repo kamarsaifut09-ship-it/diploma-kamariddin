@@ -4,6 +4,11 @@
   if (!list || !totalNode) return;
 
   const api = window.weproApi;
+  if (!api.readToken()) {
+    location.replace(api.loginUrl('bag.html'));
+    return;
+  }
+
   const checkout = document.querySelector('[data-checkout]');
   const notice = document.querySelector('[data-checkout-notice]');
   const money = (amount) => `$${Number(amount).toFixed(2)}`;
@@ -28,7 +33,7 @@
     if (!cart.items.length) {
       const empty = document.createElement('p');
       empty.className = 'bag-empty';
-      empty.textContent = 'Your bag is empty.';
+      empty.textContent = 'No products in your bag';
       list.append(empty);
       return;
     }
@@ -52,7 +57,7 @@
       remove.className = 'bag-item__remove';
       remove.type = 'button';
       remove.setAttribute('aria-label', `Remove ${item.name} from bag`);
-      remove.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3m-9 0 1 13h10l1-13M10 10v7m4-7v7"/></svg>';
+      remove.innerHTML = '<img src="public/images/trashcan.svg" alt="" />';
       remove.addEventListener('click', () => runCartAction(remove, () => window.removeFromBag(item.id)));
 
       const quantity = document.createElement('div');
@@ -96,10 +101,14 @@
 
   window.addEventListener('bag:updated', (event) => render(event.detail.cart));
   window.getBag()
-    .then(render)
+    .then((cart) => {
+      document.body.classList.remove('bag-page--locked');
+      render(cart);
+    })
     .catch((error) => {
       if (error.status === 401) location.replace(api.loginUrl('bag.html'));
       else {
+        document.body.classList.remove('bag-page--locked');
         list.textContent = 'Your bag could not be loaded.';
         checkout.disabled = true;
       }

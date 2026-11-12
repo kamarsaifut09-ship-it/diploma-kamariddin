@@ -1,3 +1,4 @@
+@font-face { font-family: "SF Pro Display"; src: url("../public/fonts/SF-Pro-Display-Regular.otf") format("opentype"); font-style: normal; font-weight: 400; font-display: swap; }
 @font-face { font-family: "SF Pro Display"; src: url("../public/fonts/SF-Pro-Display-Semibold.otf") format("opentype"); font-style: normal; font-weight: 600; font-display: swap; }
 
 * { box-sizing: border-box; }
@@ -391,6 +392,7 @@ body {
 .auth-page { min-height: 100vh; }
 .auth-form { width: 425px; margin: 39px auto 0; }
 .auth-form h1 { margin: 0 0 18px; font-size: 40px; font-weight: 500; line-height: 48px; letter-spacing: -0.06em; }
+.auth-context { margin: -8px 0 18px; color: #777; font-size: 14px; line-height: 20px; }
 .auth-form__fields { display: flex; flex-direction: column; gap: 16px; }
 .auth-form__field { display: flex; flex-direction: column; gap: 8px; }
 .auth-form__field label { font-size: 16px; line-height: 19px; }
@@ -406,34 +408,35 @@ body {
 .profile-main { width: min(1200px, calc(100vw - 48px)); margin: 40px 0 0 max(calc((100vw - 1200px) / 2), 24px); }
 .profile-overview { width: 588px; }
 .profile-label { margin: 0; font-size: 16px; font-weight: 500; line-height: 16px; letter-spacing: -0.06em; text-transform: uppercase; }
-.profile-name { margin: 22px 0 12px; font-size: 56px; font-weight: 500; line-height: 56px; letter-spacing: -0.06em; }
+.profile-name { margin: 22px 0 12px; font-size: 56px; font-weight: 500; line-height: 56px; letter-spacing: -0.06em; text-transform: capitalize; }
 .profile-contact { margin: 0; font-size: 16px; font-weight: 500; line-height: 16px; letter-spacing: -0.06em; }
 .profile-email { margin-top: 18px; text-transform: lowercase; }
-.profile-logout { display: flex; width: 214px; height: 48px; align-items: center; justify-content: center; margin-top: 26px; border-radius: 4px; background: #000; color: #fff; font-size: 18px; font-weight: 600; text-decoration: none; }
+.profile-logout { display: flex; width: 214px; height: 48px; align-items: center; justify-content: center; margin-top: 26px; border-radius: 4px; background: #000; color: #fff; font: 600 18px/21px "SF Pro Display", Arial, sans-serif; text-decoration: none; }
 .profile-orders { min-height: 420px; margin-top: 76px; }
 .profile-orders h2 { margin: 0; font-size: 40px; font-weight: 500; line-height: 40px; letter-spacing: -0.06em; }
 .profile-order-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
 .profile-order-card img { display: block; width: 100%; aspect-ratio: 282 / 324; border-radius: 8px; object-fit: cover; }
 .profile-order-card h3 { margin: 8px 0 0; font-size: 16px; font-weight: 500; line-height: 16px; letter-spacing: -0.06em; }
-.profile-order-card__detail { margin: 8px 0 0; color: #777; font-size: 13px; line-height: 18px; }
 .profile-orders__empty { grid-column: 1 / -1; margin: 0; color: #777; font-size: 16px; }
 .profile-order-confirmation { margin: 0 0 20px; color: #16803b; font-size: 16px; }
 .profile-page .site-footer { width: min(1280px, calc(100vw - 48px)); margin: 76px 0 0 max(calc((100vw - 1280px) / 2), 24px); }
 .checkout-notice { margin: 0; color: #fff; font-size: 14px; line-height: 20px; }
+.bag-page--locked .bag-layout,
+.bag-page--locked .site-footer { visibility: hidden; }
 
 /* Bag page */
 .bag-layout {
   display: grid;
   width: 980px;
-  min-height: 638px;
-  grid-template-columns: 515px 380px;
+  min-height: 302px;
+  grid-template-columns: 552px 380px;
   align-items: start;
   justify-content: space-between;
   margin: 42px auto 0;
 }
 
 .bag-items h1 {
-  margin: 0 0 42px;
+  margin: 0 0 33px;
   font-size: 40px;
   font-weight: 500;
   line-height: 1;
@@ -478,7 +481,7 @@ body {
   cursor: pointer;
 }
 
-.bag-item__remove svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.5; }
+.bag-item__remove img { display: block; width: 18px; height: 20px; }
 
 .bag-quantity {
   display: flex;
@@ -495,7 +498,18 @@ body {
 .bag-quantity button:disabled { cursor: default; }
 .bag-quantity span { min-width: 16px; text-align: center; font-size: 14px; }
 
-.bag-empty { margin: 0; color: #777; font-size: 16px; }
+.bag-empty {
+  display: flex;
+  width: 100%;
+  height: 89px;
+  align-items: center;
+  margin: 0;
+  padding: 0 30px;
+  border-radius: 10px;
+  background: #f0f0f0;
+  color: #000;
+  font: 24px/29px "SF Pro Display", Arial, sans-serif;
+}
 
 .order-summary {
   display: flex;
@@ -509,10 +523,10 @@ body {
   color: #fff;
 }
 
-.order-summary h2 { margin: 0; font-size: 24px; font-weight: 600; line-height: 29px; letter-spacing: -0.04em; }
-.order-summary__total { display: flex; align-items: center; justify-content: space-between; font-size: 20px; line-height: 29px; }
-.order-summary__total strong { font-size: 24px; font-weight: 600; }
-.checkout-button { width: 100%; height: 48px; flex: none; border: 0; border-radius: 48px; background: #fff; color: #000; font: 14px Inter, Arial, sans-serif; cursor: pointer; }
+.order-summary h2 { margin: 0; font: 600 24px/29px "SF Pro Display", Arial, sans-serif; }
+.order-summary__total { display: flex; align-items: center; justify-content: space-between; font: 20px/24px "SF Pro Display", Arial, sans-serif; }
+.order-summary__total strong { font: 600 24px/29px "SF Pro Display", Arial, sans-serif; }
+.checkout-button { width: 100%; height: 48px; flex: none; border: 0; border-radius: 48px; background: #fff; color: #000; font: 14px/17px "SF Pro Display", Arial, sans-serif; cursor: pointer; }
 .checkout-button:disabled { cursor: default; }
 
 @media (max-width: 600px) {

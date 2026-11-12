@@ -1,8 +1,6 @@
 (() => {
   const api = window.weproApi;
   const ordersGrid = document.querySelector('[data-orders]');
-  const money = (amount) => `$${Number(amount).toFixed(2)}`;
-
   const renderOrders = (orders) => {
     ordersGrid.replaceChildren();
     const entries = orders.flatMap((order) => order.items.map((item) => ({ order, item })));
@@ -22,10 +20,7 @@
       image.alt = item.name;
       const name = document.createElement('h3');
       name.textContent = item.name;
-      const detail = document.createElement('p');
-      detail.className = 'profile-order-card__detail';
-      detail.textContent = `${new Date(order.createdAt).toLocaleDateString()} · ${money(item.sum ?? item.price * (item.qty || 1))}`;
-      card.append(image, name, detail);
+      card.append(image, name);
       ordersGrid.append(card);
     }
   };
@@ -39,15 +34,7 @@
       try {
         const { orders = [] } = await api.request('/orders');
         renderOrders(orders.map((order) => ({
-        createdAt: order.createdAt,
-        status: order.status || 'Placed',
-        items: (order.items || []).map((item) => ({
-          name: item.title,
-          image: item.image,
-          price: Number(item.price),
-          qty: Number(item.qty || 1),
-          sum: Number(item.sum ?? Number(item.price) * Number(item.qty || 1)),
-        })),
+          items: (order.items || []).map((item) => ({ name: item.title, image: item.image })),
         })));
       } catch (error) {
         if (error.status === 401) throw error;
