@@ -524,6 +524,11 @@ body {
 }
 
 .order-summary h2 { margin: 0; font: 600 24px/29px "SF Pro Display", Arial, sans-serif; }
+.order-summary__breakdown { display: flex; flex-direction: column; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.35); }
+.order-summary__breakdown[hidden] { display: none; }
+.order-summary__line { display: flex; align-items: center; justify-content: space-between; font: 20px/24px "SF Pro Display", Arial, sans-serif; }
+.order-summary__line strong { font-weight: 500; }
+.order-summary__discount strong { color: #ff3038; }
 .order-summary__total { display: flex; align-items: center; justify-content: space-between; font: 20px/24px "SF Pro Display", Arial, sans-serif; }
 .order-summary__total strong { font: 600 24px/29px "SF Pro Display", Arial, sans-serif; }
 .checkout-button { width: 100%; height: 48px; flex: none; border: 0; border-radius: 48px; background: #fff; color: #000; font: 14px/17px "SF Pro Display", Arial, sans-serif; cursor: pointer; }
@@ -598,12 +603,14 @@ body {
   .bag-item__remove { top: 88px; left: 158px; }
   .bag-quantity { position: absolute; right: 8px; bottom: 17px; width: 127px; height: 44px; margin: 0; }
   .order-summary { width: 100%; min-height: 194px; gap: 24px; margin-top: 46px; padding: 20px 23px; }
+  .order-summary--empty { padding: 24px 23px; }
+  .bag-empty { height: 64px; padding: 0 20px; font-size: 20px; line-height: 24px; }
   .bag-page .site-footer { margin-top: 45px; }
 
-  .product-detail { display: flex; width: auto; flex-direction: column; gap: 0; margin: 39px 24px 0; }
+  .product-detail { display: flex; width: auto; flex-direction: column; gap: 0; margin: 21px 24px 0; }
   .product-detail-page { min-height: 2460px; }
   .product-gallery { width: 100%; }
-  .product-detail__image-frame { width: 100%; height: 267px; }
+  .product-detail__image-frame { width: 100%; height: 285px; }
   .product-detail__image { transform: scale(1.55); transform-origin: 50% 44%; }
   .product-detail__info { width: 100%; padding-top: 54px; }
   .product-detail__info h1 { margin-bottom: 14px; font-size: 32px; line-height: 38px; }

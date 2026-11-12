@@ -33,6 +33,10 @@
       </section>
       <aside class="order-summary" aria-labelledby="summary-title">
         <h2 id="summary-title">Order Summary</h2>
+        <div class="order-summary__breakdown" data-empty-summary hidden>
+          <div class="order-summary__line"><span>Subtotal</span><strong data-bag-subtotal>0</strong></div>
+          <div class="order-summary__line order-summary__discount"><span>Discount (-0%)</span><strong>0</strong></div>
+        </div>
         <div class="order-summary__total"><span>Total</span><strong data-bag-total>$0.00</strong></div>
         <button class="checkout-button" type="button" data-checkout>Go to checkout</button>
         <p class="checkout-notice" data-checkout-notice role="status" hidden></p>

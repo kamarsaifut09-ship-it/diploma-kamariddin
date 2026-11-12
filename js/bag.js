@@ -11,6 +11,9 @@
 
   const checkout = document.querySelector('[data-checkout]');
   const notice = document.querySelector('[data-checkout-notice]');
+  const summary = document.querySelector('.order-summary');
+  const emptySummary = document.querySelector('[data-empty-summary]');
+  const subtotalNode = document.querySelector('[data-bag-subtotal]');
   const money = (amount) => `$${Number(amount).toFixed(2)}`;
   const runCartAction = async (button, action) => {
     button.disabled = true;
@@ -27,8 +30,11 @@
 
   const render = (cart) => {
     list.replaceChildren();
-    totalNode.textContent = money(cart.total);
+    totalNode.textContent = cart.items.length ? money(cart.total) : '0';
     checkout.disabled = cart.items.length === 0;
+    summary.classList.toggle('order-summary--empty', cart.items.length === 0);
+    emptySummary.hidden = cart.items.length !== 0;
+    subtotalNode.textContent = cart.items.length ? money(cart.total) : '0';
 
     if (!cart.items.length) {
       const empty = document.createElement('p');
